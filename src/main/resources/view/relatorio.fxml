@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+        prefHeight="720.0"
+        prefWidth="900.0"
+        stylesheets="@../css/style.css"
+        xmlns="http://javafx.com/javafx/17.0.2-ea"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="controller.RelatorioController">
+
+
+
+    <top>
+
+        <HBox
+                alignment="CENTER_LEFT"
+                spacing="20"
+                styleClass="topo">
+
+            <padding>
+                <Insets
+                        top="16"
+                        right="32"
+                        bottom="16"
+                        left="32"/>
+            </padding>
+
+            <VBox
+                    alignment="CENTER_LEFT"
+                    spacing="3">
+
+                <Label
+                        text="Relatório"
+                        styleClass="titulo"/>
+
+                <Label
+                        fx:id="lblTituloPeriodo"
+                        text="Relatório Financeiro Completo"
+                        styleClass="subtitulo"/>
+            </VBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <ComboBox
+                    fx:id="comboMes"
+                    prefWidth="180"/>
+        </HBox>
+
+    </top>
+
+
+
+    <center>
+
+        <VBox
+                spacing="24"
+                styleClass="painel">
+
+            <padding>
+                <Insets
+                        top="32"
+                        right="40"
+                        bottom="32"
+                        left="40"/>
+            </padding>
+
+
+
+            <HBox
+                    alignment="CENTER_LEFT"
+                    spacing="16">
+
+                <VBox
+                        alignment="CENTER_LEFT"
+                        minWidth="240"
+                        prefWidth="240"
+                        spacing="8"
+                        styleClass="card-destaque">
+
+                    <Label
+                            text="RECEITAS DO PERÍODO"
+                            styleClass="topo-card-label"/>
+
+                    <Label
+                            fx:id="lblReceitas"
+                            text="R$ 0,00"
+                            styleClass="topo-card-valor topo-card-valor-positivo"/>
+                </VBox>
+
+                <VBox
+                        alignment="CENTER_LEFT"
+                        minWidth="240"
+                        prefWidth="240"
+                        spacing="8"
+                        styleClass="card-formulario">
+
+                    <Label
+                            text="DESPESAS DO PERÍODO"
+                            styleClass="topo-card-label"/>
+
+                    <Label
+                            fx:id="lblDespesas"
+                            text="R$ 0,00"
+                            styleClass="topo-card-valor topo-card-valor-negativo"/>
+                </VBox>
+
+                <VBox
+                        alignment="CENTER_LEFT"
+                        minWidth="240"
+                        prefWidth="240"
+                        spacing="8"
+                        styleClass="card-formulario">
+
+                    <Label
+                            text="SALDO FINAL"
+                            styleClass="topo-card-label"/>
+
+                    <Label
+                            fx:id="lblSaldo"
+                            text="R$ 0,00"
+                            styleClass="topo-valor"/>
+                </VBox>
+
+            </HBox>
+
+
+
+            <PieChart
+                    fx:id="graficoFinanceiro"
+                    prefHeight="260"
+                    legendVisible="true"/>
+
+
+
+            <Label
+                    text="EXTRATO COMPLETO"
+                    styleClass="label"/>
+
+
+
+            <TableView
+                    fx:id="tabelaRelatorio"
+                    prefHeight="320"
+                    VBox.vgrow="ALWAYS">
+
+                <columns>
+
+                    <TableColumn
+                            fx:id="colData"
+                            prefWidth="130"
+                            text="DATA"/>
+
+                    <TableColumn
+                            fx:id="colDescricao"
+                            prefWidth="320"
+                            text="DESCRIÇÃO"/>
+
+                    <TableColumn
+                            fx:id="colValor"
+                            prefWidth="160"
+                            text="VALOR"/>
+
+                    <TableColumn
+                            fx:id="colTipo"
+                            prefWidth="140"
+                            text="TIPO"/>
+
+                </columns>
+
+                <columnResizePolicy>
+                    <TableView
+                            fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+
+            </TableView>
+
+        </VBox>
+
+    </center>
+
+
+
+    <bottom>
+
+        <HBox
+                alignment="CENTER_RIGHT"
+                spacing="12"
+                styleClass="rodape">
+
+            <padding>
+                <Insets
+                        top="16"
+                        right="40"
+                        bottom="24"
+                        left="40"/>
+            </padding>
+
+            <Button
+                    fx:id="btnFechar"
+                    text="Fechar"
+                    onAction="#fechar"
+                    styleClass="botao-ghost"/>
+
+        </HBox>
+
+    </bottom>
+
+</BorderPane>

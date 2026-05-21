@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="520.0"
+            prefWidth="560.0"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.NovaTransacaoController"
+            stylesheets="@../css/style.css">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="0" styleClass="topo">
+            <VBox alignment="CENTER_LEFT" spacing="3">
+                <Label text="Nova Transação" styleClass="titulo"/>
+                <Label text="Registre uma receita ou despesa" styleClass="subtitulo"/>
+            </VBox>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true"
+                    hbarPolicy="NEVER"
+                    styleClass="scroll-formulario"
+                    pannable="true">
+        <content>
+        <VBox spacing="0" styleClass="painel">
+            <padding>
+                <Insets top="32" right="40" bottom="16" left="40"/>
+            </padding>
+
+            <GridPane hgap="16" vgap="20" styleClass="grid-formulario">
+
+                <Label text="TIPO" styleClass="label"
+                       GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="cbTipo" prefWidth="340"
+                          promptText="Selecione o tipo"
+                          GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="DESCRIÇÃO" styleClass="label"
+                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtDescricao"
+                           promptText="Ex: Salário, Aluguel, Mercado..."
+                           prefWidth="340"
+                           GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="VALOR (R$)" styleClass="label"
+                       GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="txtValor"
+                           promptText="Ex: 1500.00"
+                           prefWidth="340"
+                           GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="DATA" styleClass="label"
+                       GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="datePicker" prefWidth="340"
+                            GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <Label text="OBSERVAÇÃO" styleClass="label"
+                       GridPane.rowIndex="4" GridPane.columnIndex="0"
+                       GridPane.valignment="TOP"/>
+                <TextArea fx:id="txtObservacao"
+                          promptText="Opcional — detalhes adicionais"
+                          prefWidth="340" prefHeight="80"
+                          GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                <CheckBox fx:id="chkConfirmar"
+                          text="Confirmo que os dados estão corretos"
+                          GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            </GridPane>
+
+            <Label fx:id="lblFeedback" text=""
+                   styleClass="label-erro"
+                   visible="false" managed="false">
+                <VBox.margin>
+                    <Insets top="12"/>
+                </VBox.margin>
+            </Label>
+
+        </VBox>
+        </content>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="12" styleClass="rodape">
+            <padding>
+                <Insets top="16" right="40" bottom="24" left="40"/>
+            </padding>
+            <Button text="Cancelar"
+                    onAction="#fechar"
+                    styleClass="botao-ghost"/>
+            <Button fx:id="btnSalvar"
+                    text="Salvar Transação"
+                    onAction="#salvarTransacao"
+                    styleClass="botao-principal"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

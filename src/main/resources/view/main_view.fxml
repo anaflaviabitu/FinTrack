@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+        prefHeight="720.0"
+        prefWidth="1100.0"
+        stylesheets="@../css/style.css"
+        xmlns="http://javafx.com/javafx/17.0.2-ea"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="controller.MainController">
+
+
+    <top>
+
+        <HBox
+                alignment="CENTER_LEFT"
+                spacing="18"
+                styleClass="topo">
+
+            <padding>
+                <Insets
+                        top="18"
+                        right="32"
+                        bottom="18"
+                        left="32"/>
+            </padding>
+
+            <VBox spacing="3">
+
+                <HBox spacing="6">
+
+                    <Label
+                            text="Fin"
+                            styleClass="titulo"/>
+
+                    <Label
+                            text="Track"
+                            styleClass="titulo-accent"/>
+
+                </HBox>
+
+                <Label
+                        text="CONTROLE FINANCEIRO PESSOAL"
+                        styleClass="subtitulo"/>
+
+            </VBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+
+            <VBox
+                    spacing="4"
+                    alignment="CENTER_LEFT"
+                    styleClass="topo-card">
+
+                <Label
+                        text="RECEITAS"
+                        styleClass="topo-card-label"/>
+
+                <Label
+                        fx:id="lblTotalReceitas"
+                        text="R$ 0,00"
+                        styleClass="topo-card-valor topo-card-valor-positivo"/>
+
+            </VBox>
+
+
+            <VBox
+                    spacing="4"
+                    alignment="CENTER_LEFT"
+                    styleClass="topo-card">
+
+                <Label
+                        text="DESPESAS"
+                        styleClass="topo-card-label"/>
+
+                <Label
+                        fx:id="lblTotalDespesas"
+                        text="R$ 0,00"
+                        styleClass="topo-card-valor topo-card-valor-negativo"/>
+
+            </VBox>
+
+
+            <VBox
+                    spacing="4"
+                    alignment="CENTER_LEFT"
+                    styleClass="topo-card-saldo">
+
+                <Label
+                        text="SALDO"
+                        styleClass="topo-card-label"/>
+
+                <Label
+                        fx:id="lblSaldoTopo"
+                        text="R$ 0,00"
+                        styleClass="topo-valor"/>
+
+            </VBox>
+
+        </HBox>
+
+    </top>
+
+
+    <center>
+
+        <VBox
+                spacing="24"
+                styleClass="painel">
+
+            <padding>
+                <Insets
+                        top="32"
+                        right="40"
+                        bottom="32"
+                        left="40"/>
+            </padding>
+
+            <!-- AÇÕES -->
+            <HBox
+                    alignment="CENTER_LEFT"
+                    spacing="14">
+
+                <Button
+                        text="Nova Transação"
+                        onAction="#abrirNovaTransacao"
+                        styleClass="botao-principal"/>
+
+                <Button
+                        text="Relatório"
+                        onAction="#abrirRelatorio"
+                        styleClass="botao-secundario"/>
+
+                <Button
+                        text="Remover Selecionada"
+                        onAction="#removerTransacao"
+                        styleClass="botao-perigo"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <!-- FILTRO MÊS -->
+                <Label
+                        text="Filtrar por mês:"
+                        styleClass="label"/>
+
+                <ComboBox
+                        fx:id="comboMes"
+                        prefWidth="180"/>
+
+            </HBox>
+
+            <!-- TABELA -->
+            <TableView
+                    fx:id="tabelaTransacoes"
+                    VBox.vgrow="ALWAYS">
+
+                <columns>
+
+                    <TableColumn
+                            fx:id="colData"
+                            prefWidth="140"
+                            text="DATA"/>
+
+                    <TableColumn
+                            fx:id="colDescricao"
+                            prefWidth="480"
+                            text="DESCRIÇÃO"/>
+
+                    <TableColumn
+                            fx:id="colValor"
+                            prefWidth="180"
+                            text="VALOR"/>
+
+                    <TableColumn
+                            fx:id="colTipo"
+                            prefWidth="160"
+                            text="TIPO"/>
+
+                </columns>
+
+                <columnResizePolicy>
+                    <TableView
+                            fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+
+            </TableView>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

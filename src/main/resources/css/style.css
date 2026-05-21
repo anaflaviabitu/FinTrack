@@ -1,0 +1,671 @@
+.root {
+    -fx-background-color: #0f1722;
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 14px;
+}
+
+.border-pane {
+    -fx-background-color: transparent;
+}
+
+
+
+.topo {
+    -fx-background-color: #131c29;
+    -fx-border-color: transparent transparent #253247 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 18 32;
+}
+
+.titulo {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 22px;
+    -fx-font-weight: 800;
+}
+
+.titulo-accent {
+    -fx-text-fill: #60a5fa;
+    -fx-font-size: 22px;
+    -fx-font-weight: 800;
+}
+
+.subtitulo {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 1.2px;
+}
+
+
+
+.topo-card {
+    -fx-background-color: #182232;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #253247;
+    -fx-border-width: 1;
+    -fx-padding: 10 18;
+    -fx-min-width: 140px;
+    -fx-spacing: 4;
+}
+
+.topo-card:hover {
+    -fx-border-color: #3b82f6;
+}
+
+.topo-card-saldo {
+    -fx-background-color: #1b2638;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #3b82f6;
+    -fx-border-width: 1;
+    -fx-padding: 10 18;
+    -fx-min-width: 150px;
+    -fx-spacing: 4;
+}
+
+.topo-card-label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 10px;
+    -fx-font-weight: 800;
+    -fx-letter-spacing: 1px;
+}
+
+.topo-card-valor {
+    -fx-font-size: 17px;
+    -fx-font-weight: 700;
+}
+
+.topo-card-valor-positivo {
+    -fx-text-fill: #34d399;
+}
+
+.topo-card-valor-negativo {
+    -fx-text-fill: #f87171;
+}
+
+.topo-valor {
+    -fx-text-fill: #60a5fa;
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+}
+
+
+
+.topo-separador {
+    -fx-background-color: #253247;
+    -fx-min-width: 1;
+    -fx-pref-width: 1;
+    -fx-max-width: 1;
+    -fx-min-height: 42;
+    -fx-opacity: 0.9;
+}
+
+
+
+.painel {
+    -fx-background-color: transparent;
+}
+
+.card-formulario,
+.card-destaque {
+    -fx-background-color: #131c29;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #253247;
+    -fx-border-width: 1;
+    -fx-padding: 28 32;
+    -fx-spacing: 18;
+}
+
+.card-formulario:hover,
+.card-destaque:hover {
+    -fx-border-color: #334155;
+}
+
+
+.label {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.label-valor {
+    -fx-text-fill: #e2e8f0;
+}
+
+.saldo {
+    -fx-text-fill: #60a5fa;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+.saldo-positivo {
+    -fx-text-fill: #34d399;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+.saldo-negativo {
+    -fx-text-fill: #f87171;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+
+
+.text-field,
+.text-area,
+.combo-box,
+.date-picker {
+    -fx-background-color: #1b2638;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #253247;
+    -fx-border-width: 1;
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 14px;
+    -fx-padding: 10 14;
+    -fx-pref-height: 42;
+    -fx-prompt-text-fill: #64748b;
+}
+
+.text-field:hover,
+.text-area:hover,
+.combo-box:hover,
+.date-picker:hover {
+    -fx-border-color: #3b82f6;
+}
+
+.text-field:focused,
+.text-area:focused,
+.combo-box:focused,
+.date-picker:focused {
+    -fx-border-color: #60a5fa;
+    -fx-background-color: #1e293b;
+}
+
+.text-area .content {
+    -fx-background-color: #1b2638;
+}
+
+
+
+.combo-box .list-cell {
+    -fx-background-color: #1b2638;
+    -fx-text-fill: #94a3b8;
+    -fx-padding: 9 14;
+    -fx-font-weight: 600;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #131c29;
+    -fx-border-color: #253247;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #cbd5e1;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #1e293b;
+}
+
+.combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+
+.date-picker {
+    -fx-background-color: #1b2638;
+}
+
+.date-picker .text-field {
+    -fx-background-color: #1b2638;
+    -fx-text-fill: #e2e8f0;
+    -fx-background-insets: 0;
+    -fx-background-radius: 8 0 0 8;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #1b2638;
+    -fx-background-radius: 0 8 8 0;
+    -fx-border-color: transparent;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: #243247;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: #94a3b8;
+}
+
+.date-picker:focused,
+.date-picker:hover {
+    -fx-border-color: #60a5fa;
+}
+
+.date-picker-popup {
+    -fx-background-color: #131c29;
+    -fx-border-color: #253247;
+}
+
+.date-picker-popup > * {
+    -fx-background-color: #131c29;
+}
+
+.date-picker-popup > .month-year-pane {
+    -fx-background-color: #182232;
+}
+
+.date-picker-popup .label {
+    -fx-text-fill: #e2e8f0;
+}
+
+.date-picker-popup .day-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #cbd5e1;
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #2563eb33;
+}
+
+.date-picker-popup .day-cell:selected {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup .today {
+    -fx-border-color: #60a5fa;
+}
+
+
+
+.button {
+    -fx-cursor: hand;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 9 18;
+    -fx-background-radius: 8;
+}
+
+.botao-principal {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+.botao-principal:hover {
+    -fx-background-color: #3b82f6;
+}
+
+.botao-secundario {
+    -fx-background-color: transparent;
+    -fx-text-fill: #60a5fa;
+    -fx-border-color: #60a5fa;
+    -fx-border-width: 1;
+}
+
+.botao-secundario:hover {
+    -fx-background-color: #2563eb22;
+}
+
+.botao-ghost {
+    -fx-background-color: #182232;
+    -fx-text-fill: #cbd5e1;
+    -fx-border-color: #253247;
+    -fx-border-width: 1;
+}
+
+.botao-ghost:hover {
+    -fx-background-color: #1e293b;
+}
+
+.botao-perigo {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f87171;
+    -fx-border-color: #f87171;
+    -fx-border-width: 1;
+}
+
+.botao-perigo:hover {
+    -fx-background-color: #f8717122;
+}
+
+
+
+.table-view {
+    -fx-background-color: #131c29;
+    -fx-border-color: #253247;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #182232;
+    -fx-background-radius: 10 10 0 0;
+    -fx-border-color: transparent transparent #253247 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-padding: 12 16;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 11px;
+    -fx-font-weight: 700;
+    -fx-letter-spacing: 1px;
+}
+
+.table-row-cell {
+    -fx-background-color: #131c29;
+    -fx-border-color: transparent transparent #1e293b transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #101826;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #182232;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #2563eb22;
+    -fx-border-color: transparent transparent transparent #60a5fa;
+    -fx-border-width: 0 0 0 3;
+}
+
+.table-cell {
+    -fx-text-fill: #cbd5e1;
+    -fx-font-size: 13px;
+    -fx-padding: 13 16;
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: white;
+}
+
+.coluna-valor-positivo {
+    -fx-text-fill: #34d399;
+    -fx-font-weight: bold;
+}
+
+.coluna-valor-negativo {
+    -fx-text-fill: #f87171;
+    -fx-font-weight: bold;
+}
+
+.coluna-tipo-receita {
+    -fx-text-fill: #34d399;
+    -fx-font-weight: bold;
+}
+
+.coluna-tipo-despesa {
+    -fx-text-fill: #f87171;
+    -fx-font-weight: bold;
+}
+
+
+
+.rodape {
+    -fx-background-color: #101826;
+    -fx-border-color: #253247 transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+
+
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: #101826;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #334155;
+    -fx-background-radius: 6;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #60a5fa;
+}
+
+
+
+.dialog-pane {
+    -fx-background-color: #131c29;
+    -fx-border-color: #253247;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #182232;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: #e2e8f0;
+}
+
+.dialog-pane .button {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+}
+
+.anchor-pane,
+.vbox,
+.hbox,
+.grid-pane,
+.stack-pane,
+.border-pane {
+    -fx-background-color: #0f1722;
+}
+
+
+
+.scroll-formulario {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-formulario > .viewport {
+    -fx-background-color: #0d1117;
+}
+
+.scroll-formulario .content {
+    -fx-background-color: #0d1117;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: #0d1117;
+}
+
+
+
+.painel {
+    -fx-background-color: #0d1117;
+    -fx-spacing: 12;
+}
+
+
+.topo {
+    -fx-background-color: linear-gradient(to right, #0f1c2e, #131c29);
+    -fx-border-color: transparent transparent #1e3a5f transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 12, 0, 0, 4);
+}
+
+.logo-icone {
+    -fx-text-fill: #60a5fa;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.topo-card-receita {
+    -fx-background-color: #0d2818;
+    -fx-border-color: #16a34a;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 12 20;
+    -fx-min-width: 155px;
+}
+
+.topo-card-receita:hover {
+    -fx-background-color: #14391f;
+    -fx-border-color: #22c55e;
+}
+
+.topo-card-despesa {
+    -fx-background-color: #2a0d0d;
+    -fx-border-color: #dc2626;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 12 20;
+    -fx-min-width: 155px;
+}
+
+.topo-card-despesa:hover {
+    -fx-background-color: #3b1111;
+    -fx-border-color: #ef4444;
+}
+
+.topo-card-saldo {
+    -fx-background-color: #0c1f3a;
+    -fx-border-color: #2563eb;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 12 22;
+    -fx-min-width: 165px;
+    -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.3), 10, 0, 0, 0);
+}
+
+.topo-card-saldo:hover {
+    -fx-background-color: #112444;
+    -fx-border-color: #3b82f6;
+}
+
+.card-icone-receita {
+    -fx-text-fill: #22c55e;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.card-icone-despesa {
+    -fx-text-fill: #ef4444;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.card-icone-saldo {
+    -fx-text-fill: #60a5fa;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.topo-card-label {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 10px;
+    -fx-font-weight: 800;
+}
+
+.topo-card-valor {
+    -fx-font-size: 19px;
+    -fx-font-weight: 800;
+}
+
+.topo-card-valor-positivo { -fx-text-fill: #22c55e; }
+.topo-card-valor-negativo { -fx-text-fill: #f87171; }
+
+.topo-valor          { -fx-text-fill: #60a5fa; -fx-font-size: 22px; -fx-font-weight: 800; }
+.topo-valor-positivo { -fx-text-fill: #22c55e; -fx-font-size: 22px; -fx-font-weight: 800; }
+.topo-valor-negativo { -fx-text-fill: #f87171; -fx-font-size: 22px; -fx-font-weight: 800; }
+
+.topo-separador {
+    -fx-background-color: #253247;
+    -fx-min-width: 1;
+    -fx-pref-width: 1;
+    -fx-max-width: 1;
+    -fx-min-height: 50;
+    -fx-opacity: 0.7;
+}
+
+
+.botao-principal {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 11 24;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.4), 8, 0, 0, 2);
+}
+
+.botao-principal:hover {
+    -fx-background-color: #3b82f6;
+    -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.6), 12, 0, 0, 3);
+}
+
+.botao-principal:pressed {
+    -fx-background-color: #1d4ed8;
+    -fx-effect: none;
+}
+
+.botao-secundario {
+    -fx-background-color: #182232;
+    -fx-text-fill: #60a5fa;
+    -fx-border-color: #2563eb;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 11 24;
+    -fx-cursor: hand;
+}
+
+.botao-secundario:hover {
+    -fx-background-color: #1e2e48;
+    -fx-border-color: #60a5fa;
+    -fx-text-fill: #93c5fd;
+}
+
+.botao-secundario:pressed {
+    -fx-background-color: #172038;
+}
+
+.botao-perigo {
+    -fx-background-color: #2a0d0d;
+    -fx-text-fill: #f87171;
+    -fx-border-color: #dc2626;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 11 24;
+    -fx-cursor: hand;
+}
+
+.botao-perigo:hover {
+    -fx-background-color: #3b1111;
+    -fx-border-color: #ef4444;
+    -fx-text-fill: #fca5a5;
+}
+
+.botao-perigo:pressed {
+    -fx-background-color: #200a0a;
+}
