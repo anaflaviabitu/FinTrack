@@ -65,7 +65,7 @@ class RepositorioGenericoTest {
         repo.adicionar(t2);
 
         List<Object> destino = new ArrayList<>();
-        repo.copiarPara(destino); // ? super Transacao
+        repo.copiarPara(destino);
         assertEquals(2, destino.size());
     }
 

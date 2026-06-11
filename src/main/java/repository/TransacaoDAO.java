@@ -7,26 +7,62 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class TransacaoDAO {
+
+    public TransacaoDAO() {
+
+        inicializarBanco();
+    }
 
     public void inicializarBanco() {
 
-        String sql =
-                "CREATE TABLE IF NOT EXISTS transacoes (" +
-                        " id INTEGER PRIMARY KEY AUTO_INCREMENT," +
-                        " descricao VARCHAR(100) NOT NULL," +
-                        " valor DECIMAL(10,2) NOT NULL," +
-                        " tipo VARCHAR(10) NOT NULL," +
-                        " data DATE NOT NULL" +
-                        ")";
+        try {
 
-        try (
-                Connection conn = Conexao.getConexao();
-                Statement stmt = conn.createStatement()
-        ) {
+            Connection conn =
+                    Conexao.getConexao();
+
+            Statement stmt =
+                    conn.createStatement();
+
+            String url =
+                    conn.getMetaData().getURL();
+
+            String sql;
+
+
+            if (url.contains("sqlite")) {
+
+                sql = """
+                    CREATE TABLE IF NOT EXISTS transacoes (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        descricao VARCHAR(100) NOT NULL,
+                        valor DECIMAL(10,2) NOT NULL,
+                        tipo VARCHAR(10) NOT NULL,
+                        data DATE NOT NULL
+                    )
+                """;
+
+            } else {
+
+
+                sql = """
+                    CREATE TABLE IF NOT EXISTS transacoes (
+                        id INT PRIMARY KEY AUTO_INCREMENT,
+                        descricao VARCHAR(100) NOT NULL,
+                        valor DECIMAL(10,2) NOT NULL,
+                        tipo VARCHAR(10) NOT NULL,
+                        data DATE NOT NULL
+                    )
+                """;
+            }
 
             stmt.execute(sql);
+
+            stmt.close();
+
+            System.out.println(
+                    "Tabela criada/verificada com sucesso!"
+            );
 
         } catch (SQLException e) {
 
@@ -39,61 +75,60 @@ public class TransacaoDAO {
 
     public void salvar(Transacao t) {
 
-        String sql =
-                "INSERT INTO transacoes " +
-                        "(descricao, valor, tipo, data) " +
-                        "VALUES (?, ?, ?, ?)";
+        String sql = """
+            INSERT INTO transacoes
+            (descricao, valor, tipo, data)
+            VALUES (?, ?, ?, ?)
+        """;
 
         Connection conn = null;
 
         try {
 
             conn = Conexao.getConexao();
+
             conn.setAutoCommit(false);
 
-            try (
-                    PreparedStatement stmt =
-                            conn.prepareStatement(
-                                    sql,
-                                    Statement.RETURN_GENERATED_KEYS
-                            )
-            ) {
+            PreparedStatement stmt =
+                    conn.prepareStatement(
+                            sql,
+                            Statement.RETURN_GENERATED_KEYS
+                    );
 
-                stmt.setString(
-                        1,
-                        t.getDescricao()
+            stmt.setString(
+                    1,
+                    t.getDescricao()
+            );
+
+            stmt.setDouble(
+                    2,
+                    t.getValor()
+            );
+
+            stmt.setString(
+                    3,
+                    t.getTipo()
+            );
+
+            stmt.setDate(
+                    4,
+                    Date.valueOf(t.getData())
+            );
+
+            stmt.executeUpdate();
+
+            ResultSet rs =
+                    stmt.getGeneratedKeys();
+
+            if (rs.next()) {
+
+                t.setId(
+                        rs.getInt(1)
                 );
-
-                stmt.setDouble(
-                        2,
-                        t.getValor()
-                );
-
-                stmt.setString(
-                        3,
-                        t.getTipo()
-                );
-
-                stmt.setDate(
-                        4,
-                        Date.valueOf(t.getData())
-                );
-
-                stmt.executeUpdate();
-
-                try (
-                        ResultSet rs =
-                                stmt.getGeneratedKeys()
-                ) {
-
-                    if (rs.next()) {
-
-                        t.setId(
-                                rs.getInt(1)
-                        );
-                    }
-                }
             }
+
+            rs.close();
+            stmt.close();
 
             conn.commit();
 
@@ -138,44 +173,31 @@ public class TransacaoDAO {
         List<Transacao> lista =
                 new ArrayList<>();
 
-        String sql =
-                "SELECT id, descricao, valor, tipo, data " +
-                        "FROM transacoes " +
-                        "ORDER BY data DESC, id DESC";
+        String sql = """
+            SELECT id, descricao, valor, tipo, data
+            FROM transacoes
+            ORDER BY data DESC, id DESC
+        """;
 
-        try (
+        try {
 
-                Connection conn =
-                        Conexao.getConexao();
+            Connection conn =
+                    Conexao.getConexao();
 
-                PreparedStatement stmt =
-                        conn.prepareStatement(sql);
+            PreparedStatement stmt =
+                    conn.prepareStatement(sql);
 
-                ResultSet rs =
-                        stmt.executeQuery()
-
-        ) {
+            ResultSet rs =
+                    stmt.executeQuery();
 
             while (rs.next()) {
 
                 Transacao t =
                         new Transacao(
-
-                                rs.getString(
-                                        "descricao"
-                                ),
-
-                                rs.getDouble(
-                                        "valor"
-                                ),
-
-                                rs.getString(
-                                        "tipo"
-                                ),
-
-                                rs.getDate(
-                                        "data"
-                                ).toLocalDate()
+                                rs.getString("descricao"),
+                                rs.getDouble("valor"),
+                                rs.getString("tipo"),
+                                rs.getDate("data").toLocalDate()
                         );
 
                 t.setId(
@@ -184,6 +206,9 @@ public class TransacaoDAO {
 
                 lista.add(t);
             }
+
+            rs.close();
+            stmt.close();
 
         } catch (SQLException e) {
 
@@ -196,65 +221,69 @@ public class TransacaoDAO {
         return lista;
     }
 
-    public List<Transacao> listarPorMes(
-            int mes
-    ) {
+    public List<Transacao> listarPorMes(int mes) {
 
         List<Transacao> lista =
                 new ArrayList<>();
 
-        String sql =
-                "SELECT id, descricao, valor, tipo, data " +
-                        "FROM transacoes " +
-                        "WHERE MONTH(data) = ? " +
-                        "ORDER BY data DESC, id DESC";
+        String sql;
 
-        try (
+        try {
 
-                Connection conn =
-                        Conexao.getConexao();
+            Connection conn =
+                    Conexao.getConexao();
 
-                PreparedStatement stmt =
-                        conn.prepareStatement(sql)
+            String url =
+                    conn.getMetaData().getURL();
 
-        ) {
+
+            if (url.contains("sqlite")) {
+
+                sql = """
+                SELECT id, descricao, valor, tipo, data
+                FROM transacoes
+                WHERE CAST(strftime('%m', data) AS INTEGER) = ?
+                ORDER BY data DESC, id DESC
+            """;
+
+            } else {
+
+                // H2
+                sql = """
+                SELECT id, descricao, valor, tipo, data
+                FROM transacoes
+                WHERE MONTH(data) = ?
+                ORDER BY data DESC, id DESC
+            """;
+            }
+
+            PreparedStatement stmt =
+                    conn.prepareStatement(sql);
 
             stmt.setInt(1, mes);
 
-            try (
-                    ResultSet rs =
-                            stmt.executeQuery()
-            ) {
+            ResultSet rs =
+                    stmt.executeQuery();
 
-                while (rs.next()) {
+            while (rs.next()) {
 
-                    Transacao t =
-                            new Transacao(
+                Transacao t =
+                        new Transacao(
+                                rs.getString("descricao"),
+                                rs.getDouble("valor"),
+                                rs.getString("tipo"),
+                                rs.getDate("data").toLocalDate()
+                        );
 
-                                    rs.getString(
-                                            "descricao"
-                                    ),
+                t.setId(
+                        rs.getInt("id")
+                );
 
-                                    rs.getDouble(
-                                            "valor"
-                                    ),
-
-                                    rs.getString(
-                                            "tipo"
-                                    ),
-
-                                    rs.getDate(
-                                            "data"
-                                    ).toLocalDate()
-                            );
-
-                    t.setId(
-                            rs.getInt("id")
-                    );
-
-                    lista.add(t);
-                }
+                lista.add(t);
             }
+
+            rs.close();
+            stmt.close();
 
         } catch (SQLException e) {
 
@@ -267,57 +296,56 @@ public class TransacaoDAO {
         return lista;
     }
 
-    public void atualizar(
-            Transacao t
-    ) {
+    public void atualizar(Transacao t) {
 
-        String sql =
-                "UPDATE transacoes " +
-                        "SET descricao = ?, " +
-                        "valor = ?, " +
-                        "tipo = ?, " +
-                        "data = ? " +
-                        "WHERE id = ?";
+        String sql = """
+            UPDATE transacoes
+            SET descricao = ?,
+                valor = ?,
+                tipo = ?,
+                data = ?
+            WHERE id = ?
+        """;
 
         Connection conn = null;
 
         try {
 
             conn = Conexao.getConexao();
+
             conn.setAutoCommit(false);
 
-            try (
-                    PreparedStatement stmt =
-                            conn.prepareStatement(sql)
-            ) {
+            PreparedStatement stmt =
+                    conn.prepareStatement(sql);
 
-                stmt.setString(
-                        1,
-                        t.getDescricao()
-                );
+            stmt.setString(
+                    1,
+                    t.getDescricao()
+            );
 
-                stmt.setDouble(
-                        2,
-                        t.getValor()
-                );
+            stmt.setDouble(
+                    2,
+                    t.getValor()
+            );
 
-                stmt.setString(
-                        3,
-                        t.getTipo()
-                );
+            stmt.setString(
+                    3,
+                    t.getTipo()
+            );
 
-                stmt.setDate(
-                        4,
-                        Date.valueOf(t.getData())
-                );
+            stmt.setDate(
+                    4,
+                    Date.valueOf(t.getData())
+            );
 
-                stmt.setInt(
-                        5,
-                        t.getId()
-                );
+            stmt.setInt(
+                    5,
+                    t.getId()
+            );
 
-                stmt.executeUpdate();
-            }
+            stmt.executeUpdate();
+
+            stmt.close();
 
             conn.commit();
 
@@ -357,30 +385,27 @@ public class TransacaoDAO {
         }
     }
 
-    public void remover(
-            int id
-    ) {
+    public void remover(int id) {
 
         String sql =
-                "DELETE FROM transacoes " +
-                        "WHERE id = ?";
+                "DELETE FROM transacoes WHERE id = ?";
 
         Connection conn = null;
 
         try {
 
             conn = Conexao.getConexao();
+
             conn.setAutoCommit(false);
 
-            try (
-                    PreparedStatement stmt =
-                            conn.prepareStatement(sql)
-            ) {
+            PreparedStatement stmt =
+                    conn.prepareStatement(sql);
 
-                stmt.setInt(1, id);
+            stmt.setInt(1, id);
 
-                stmt.executeUpdate();
-            }
+            stmt.executeUpdate();
+
+            stmt.close();
 
             conn.commit();
 
@@ -424,31 +449,36 @@ public class TransacaoDAO {
 
         double saldo = 0;
 
-        String sql =
-                "SELECT " +
-                        "SUM(CASE " +
-                        "WHEN tipo = 'Receita' THEN valor " +
-                        "ELSE -valor END) AS saldo " +
-                        "FROM transacoes";
+        String sql = """
+            SELECT SUM(
+                CASE
+                    WHEN tipo = 'Receita'
+                    THEN valor
+                    ELSE -valor
+                END
+            ) AS saldo
+            FROM transacoes
+        """;
 
-        try (
+        try {
 
-                Connection conn =
-                        Conexao.getConexao();
+            Connection conn =
+                    Conexao.getConexao();
 
-                PreparedStatement stmt =
-                        conn.prepareStatement(sql);
+            PreparedStatement stmt =
+                    conn.prepareStatement(sql);
 
-                ResultSet rs =
-                        stmt.executeQuery()
-
-        ) {
+            ResultSet rs =
+                    stmt.executeQuery();
 
             if (rs.next()) {
 
                 saldo =
                         rs.getDouble("saldo");
             }
+
+            rs.close();
+            stmt.close();
 
         } catch (SQLException e) {
 
@@ -465,29 +495,31 @@ public class TransacaoDAO {
 
         double receitas = 0;
 
-        String sql =
-                "SELECT SUM(valor) AS total " +
-                        "FROM transacoes " +
-                        "WHERE tipo = 'Receita'";
+        String sql = """
+            SELECT SUM(valor) AS total
+            FROM transacoes
+            WHERE tipo = 'Receita'
+        """;
 
-        try (
+        try {
 
-                Connection conn =
-                        Conexao.getConexao();
+            Connection conn =
+                    Conexao.getConexao();
 
-                PreparedStatement stmt =
-                        conn.prepareStatement(sql);
+            PreparedStatement stmt =
+                    conn.prepareStatement(sql);
 
-                ResultSet rs =
-                        stmt.executeQuery()
-
-        ) {
+            ResultSet rs =
+                    stmt.executeQuery();
 
             if (rs.next()) {
 
                 receitas =
                         rs.getDouble("total");
             }
+
+            rs.close();
+            stmt.close();
 
         } catch (SQLException e) {
 
@@ -504,29 +536,31 @@ public class TransacaoDAO {
 
         double despesas = 0;
 
-        String sql =
-                "SELECT SUM(valor) AS total " +
-                        "FROM transacoes " +
-                        "WHERE tipo = 'Despesa'";
+        String sql = """
+            SELECT SUM(valor) AS total
+            FROM transacoes
+            WHERE tipo = 'Despesa'
+        """;
 
-        try (
+        try {
 
-                Connection conn =
-                        Conexao.getConexao();
+            Connection conn =
+                    Conexao.getConexao();
 
-                PreparedStatement stmt =
-                        conn.prepareStatement(sql);
+            PreparedStatement stmt =
+                    conn.prepareStatement(sql);
 
-                ResultSet rs =
-                        stmt.executeQuery()
-
-        ) {
+            ResultSet rs =
+                    stmt.executeQuery();
 
             if (rs.next()) {
 
                 despesas =
                         rs.getDouble("total");
             }
+
+            rs.close();
+            stmt.close();
 
         } catch (SQLException e) {
 

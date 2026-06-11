@@ -7,11 +7,11 @@ import utils.Formatador;
 
 import java.util.List;
 
-public class FinTracker {
+public class FinTrack {
 
     private final TransacaoDAO dao;
 
-    public FinTracker(TransacaoDAO dao) {
+    public FinTrack(TransacaoDAO dao) {
         this.dao = dao;
     }
 

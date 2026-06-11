@@ -1,671 +1,553 @@
 .root {
-    -fx-background-color: #0f1722;
-    -fx-font-family: "Segoe UI", system-ui, sans-serif;
-    -fx-font-size: 14px;
+    -fx-background-color: #08111F;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
 }
-
-.border-pane {
-    -fx-background-color: transparent;
-}
-
 
 
 .topo {
-    -fx-background-color: #131c29;
-    -fx-border-color: transparent transparent #253247 transparent;
+    -fx-background-color: rgba(3,10,25,0.96);
+    -fx-pref-height: 100;
+    -fx-min-height: 100;
+    -fx-max-height: 100;
+    -fx-border-color: transparent transparent rgba(255,255,255,0.05) transparent;
     -fx-border-width: 0 0 1 0;
-    -fx-padding: 18 32;
+    -fx-alignment: center-left;
 }
 
-.titulo {
-    -fx-text-fill: #e2e8f0;
-    -fx-font-size: 22px;
-    -fx-font-weight: 800;
-}
 
-.titulo-accent {
-    -fx-text-fill: #60a5fa;
-    -fx-font-size: 22px;
-    -fx-font-weight: 800;
-}
 
-.subtitulo {
-    -fx-text-fill: #64748b;
-    -fx-font-size: 10px;
+
+.badge-receita {
+    -fx-background-color: rgba(52,232,158,0.12);
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-border-color: rgba(52,232,158,0.25);
+    -fx-padding: 6 14 6 14;
+    -fx-text-fill: #34E89E;
     -fx-font-weight: bold;
-    -fx-letter-spacing: 1.2px;
+    -fx-font-size: 11px;
+}
+
+.badge-despesa {
+    -fx-background-color: rgba(255,107,138,0.12);
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-border-color: rgba(255,107,138,0.25);
+    -fx-padding: 6 14 6 14;
+    -fx-text-fill: #FF6B8A;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
 }
 
 
-
-.topo-card {
-    -fx-background-color: #182232;
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
-    -fx-border-color: #253247;
-    -fx-border-width: 1;
-    -fx-padding: 10 18;
-    -fx-min-width: 140px;
+.topo-card-receita,
+.topo-card-despesa,
+.topo-card-saldo {
+    -fx-background-radius: 18;
+    -fx-border-radius: 18;
     -fx-spacing: 4;
+    -fx-pref-height: 92;
+    -fx-min-height: 80;
+    -fx-padding: 12 22 12 22;
+    -fx-min-width: 260;
+    -fx-background-color: rgba(16,27,45,0.98);
+    -fx-border-width: 1;
 }
 
-.topo-card:hover {
-    -fx-border-color: #3b82f6;
+.topo-card-receita:hover,
+.topo-card-despesa:hover,
+.topo-card-saldo:hover {
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.topo-card-receita {
+    -fx-border-color: rgba(52,232,158,0.20);
+    -fx-effect: dropshadow(gaussian, rgba(52,232,158,0.12), 14, 0, 0, 2);
+}
+
+.topo-card-despesa {
+    -fx-border-color: rgba(255,107,138,0.20);
+    -fx-effect: dropshadow(gaussian, rgba(255,107,138,0.10), 14, 0, 0, 2);
 }
 
 .topo-card-saldo {
-    -fx-background-color: #1b2638;
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
-    -fx-border-color: #3b82f6;
-    -fx-border-width: 1;
-    -fx-padding: 10 18;
-    -fx-min-width: 150px;
-    -fx-spacing: 4;
+    -fx-border-color: rgba(79,140,255,0.20);
+    -fx-effect: dropshadow(gaussian, rgba(79,140,255,0.12), 14, 0, 0, 2);
+}
+
+
+.topo-card-bar-receita {
+    -fx-background-color: #34E89E;
+    -fx-background-radius: 18 18 0 0;
+    -fx-pref-height: 3;
+    -fx-max-height: 3;
+}
+
+.topo-card-bar-despesa {
+    -fx-background-color: #FF6B8A;
+    -fx-background-radius: 18 18 0 0;
+    -fx-pref-height: 3;
+    -fx-max-height: 3;
+}
+
+.topo-card-bar-saldo {
+    -fx-background-color: #4F8CFF;
+    -fx-background-radius: 18 18 0 0;
+    -fx-pref-height: 3;
+    -fx-max-height: 3;
 }
 
 .topo-card-label {
-    -fx-text-fill: #64748b;
-    -fx-font-size: 10px;
-    -fx-font-weight: 800;
-    -fx-letter-spacing: 1px;
+    -fx-text-fill: rgba(190,205,230,0.58);
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
 }
 
 .topo-card-valor {
-    -fx-font-size: 17px;
-    -fx-font-weight: 700;
-}
-
-.topo-card-valor-positivo {
-    -fx-text-fill: #34d399;
-}
-
-.topo-card-valor-negativo {
-    -fx-text-fill: #f87171;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
 }
 
 .topo-valor {
-    -fx-text-fill: #60a5fa;
-    -fx-font-size: 20px;
-    -fx-font-weight: 700;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #7FB0FF;
 }
 
-
-
-.topo-separador {
-    -fx-background-color: #253247;
-    -fx-min-width: 1;
-    -fx-pref-width: 1;
-    -fx-max-width: 1;
-    -fx-min-height: 42;
-    -fx-opacity: 0.9;
+.topo-card-valor-positivo {
+    -fx-text-fill: #34E89E;
 }
 
+.topo-card-valor-negativo {
+    -fx-text-fill: #FF6B8A;
+}
 
 
 .painel {
     -fx-background-color: transparent;
 }
 
-.card-formulario,
-.card-destaque {
-    -fx-background-color: #131c29;
-    -fx-background-radius: 12;
-    -fx-border-radius: 12;
-    -fx-border-color: #253247;
+
+.button {
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 24 12 24;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-pref-height: 52;
+}
+
+.button:hover {
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.botao-principal {
+    -fx-background-color: #4F8CFF;
+    -fx-effect: dropshadow(gaussian, rgba(79,140,255,0.24), 14, 0, 0, 3);
+}
+
+.botao-principal:hover {
+    -fx-background-color: #6198FF;
+}
+
+
+.botao-secundario {
+    -fx-background-color: rgba(255,255,255,0.04);
+    -fx-border-color: rgba(255,255,255,0.07);
     -fx-border-width: 1;
-    -fx-padding: 28 32;
-    -fx-spacing: 18;
+    -fx-text-fill: white;
 }
 
-.card-formulario:hover,
-.card-destaque:hover {
-    -fx-border-color: #334155;
+.botao-secundario:hover {
+    -fx-background-color: rgba(255,255,255,0.08);
 }
 
 
-.label {
-    -fx-text-fill: #94a3b8;
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
+.botao-perigo {
+    -fx-background-color: rgba(255,107,138,0.12);
+    -fx-border-color: rgba(255,107,138,0.25);
+    -fx-border-width: 1;
+    -fx-text-fill: #FF7A95;
 }
 
-.label-valor {
-    -fx-text-fill: #e2e8f0;
+.botao-perigo:hover {
+    -fx-background-color: rgba(255,107,138,0.20);
 }
 
-.saldo {
-    -fx-text-fill: #60a5fa;
-    -fx-font-size: 30px;
-    -fx-font-weight: bold;
+
+.botao-ghost {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
 }
 
-.saldo-positivo {
-    -fx-text-fill: #34d399;
-    -fx-font-size: 30px;
-    -fx-font-weight: bold;
-}
-
-.saldo-negativo {
-    -fx-text-fill: #f87171;
-    -fx-font-size: 30px;
-    -fx-font-weight: bold;
+.botao-ghost:hover {
+    -fx-background-color: rgba(255,255,255,0.05);
 }
 
 
 
 .text-field,
-.text-area,
 .combo-box,
-.date-picker {
-    -fx-background-color: #1b2638;
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
-    -fx-border-color: #253247;
+.date-picker,
+.text-area {
+    -fx-background-color: #111C2E;
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-border-color: rgba(255,255,255,0.06);
     -fx-border-width: 1;
-    -fx-text-fill: #e2e8f0;
-    -fx-font-size: 14px;
-    -fx-padding: 10 14;
-    -fx-pref-height: 42;
-    -fx-prompt-text-fill: #64748b;
+    -fx-text-fill: white;
+    -fx-padding: 12 16 12 16;
+    -fx-font-size: 13px;
+    -fx-pref-height: 52;
+    -fx-prompt-text-fill: rgba(180,195,220,0.42);
 }
 
-.text-field:hover,
-.text-area:hover,
-.combo-box:hover,
-.date-picker:hover {
-    -fx-border-color: #3b82f6;
-}
-
-.text-field:focused,
-.text-area:focused,
-.combo-box:focused,
-.date-picker:focused {
-    -fx-border-color: #60a5fa;
-    -fx-background-color: #1e293b;
+.text-area {
+    -fx-pref-height: 96;
 }
 
 .text-area .content {
-    -fx-background-color: #1b2638;
+    -fx-background-color: transparent;
+}
+
+.text-field:focused,
+.combo-box:focused,
+.date-picker:focused,
+.text-area:focused {
+    -fx-border-color: rgba(79,140,255,0.55);
+    -fx-effect: dropshadow(gaussian, rgba(79,140,255,0.14), 12, 0, 0, 0);
 }
 
 
 
 .combo-box .list-cell {
-    -fx-background-color: #1b2638;
-    -fx-text-fill: #94a3b8;
-    -fx-padding: 9 14;
-    -fx-font-weight: 600;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
 }
 
 .combo-box-popup .list-view {
-    -fx-background-color: #131c29;
-    -fx-border-color: #253247;
+    -fx-background-color: #111C2E;
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-border-color: rgba(255,255,255,0.05);
 }
 
-.combo-box-popup .list-view .list-cell {
-    -fx-background-color: transparent;
-    -fx-text-fill: #cbd5e1;
-}
-
-.combo-box-popup .list-view .list-cell:hover {
-    -fx-background-color: #1e293b;
-}
-
-.combo-box-popup .list-view .list-cell:selected {
-    -fx-background-color: #2563eb;
+.combo-box-popup .list-cell {
     -fx-text-fill: white;
+    -fx-padding: 10 14 10 14;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: rgba(79,140,255,0.10);
 }
 
 
-.date-picker {
-    -fx-background-color: #1b2638;
-}
-
-.date-picker .text-field {
-    -fx-background-color: #1b2638;
-    -fx-text-fill: #e2e8f0;
-    -fx-background-insets: 0;
-    -fx-background-radius: 8 0 0 8;
-}
-
-.date-picker .arrow-button {
-    -fx-background-color: #1b2638;
-    -fx-background-radius: 0 8 8 0;
-    -fx-border-color: transparent;
-}
-
-.date-picker .arrow-button:hover {
-    -fx-background-color: #243247;
-}
-
-.date-picker .arrow-button .arrow {
-    -fx-background-color: #94a3b8;
-}
-
-.date-picker:focused,
-.date-picker:hover {
-    -fx-border-color: #60a5fa;
-}
-
-.date-picker-popup {
-    -fx-background-color: #131c29;
-    -fx-border-color: #253247;
-}
-
-.date-picker-popup > * {
-    -fx-background-color: #131c29;
-}
-
-.date-picker-popup > .month-year-pane {
-    -fx-background-color: #182232;
-}
-
-.date-picker-popup .label {
-    -fx-text-fill: #e2e8f0;
-}
-
-.date-picker-popup .day-cell {
-    -fx-background-color: transparent;
-    -fx-text-fill: #cbd5e1;
-}
-
-.date-picker-popup .day-cell:hover {
-    -fx-background-color: #2563eb33;
-}
-
-.date-picker-popup .day-cell:selected {
-    -fx-background-color: #2563eb;
-    -fx-text-fill: white;
-}
-
-.date-picker-popup .today {
-    -fx-border-color: #60a5fa;
-}
-
-
-
-.button {
-    -fx-cursor: hand;
+.label {
+    -fx-text-fill: rgba(225,235,255,0.74);
     -fx-font-size: 12px;
     -fx-font-weight: bold;
-    -fx-padding: 9 18;
-    -fx-background-radius: 8;
 }
 
-.botao-principal {
-    -fx-background-color: #2563eb;
-    -fx-text-fill: white;
+.label-erro {
+    -fx-text-fill: #FF6B8A;
+    -fx-font-weight: bold;
 }
-
-.botao-principal:hover {
-    -fx-background-color: #3b82f6;
-}
-
-.botao-secundario {
-    -fx-background-color: transparent;
-    -fx-text-fill: #60a5fa;
-    -fx-border-color: #60a5fa;
-    -fx-border-width: 1;
-}
-
-.botao-secundario:hover {
-    -fx-background-color: #2563eb22;
-}
-
-.botao-ghost {
-    -fx-background-color: #182232;
-    -fx-text-fill: #cbd5e1;
-    -fx-border-color: #253247;
-    -fx-border-width: 1;
-}
-
-.botao-ghost:hover {
-    -fx-background-color: #1e293b;
-}
-
-.botao-perigo {
-    -fx-background-color: transparent;
-    -fx-text-fill: #f87171;
-    -fx-border-color: #f87171;
-    -fx-border-width: 1;
-}
-
-.botao-perigo:hover {
-    -fx-background-color: #f8717122;
-}
-
-
 
 .table-view {
-    -fx-background-color: #131c29;
-    -fx-border-color: #253247;
+    -fx-background-color: rgba(15,24,38,0.98);
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-border-color: rgba(255,255,255,0.05);
     -fx-border-width: 1;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
+    -fx-padding: 12;
 }
 
+
 .table-view .column-header-background {
-    -fx-background-color: #182232;
-    -fx-background-radius: 10 10 0 0;
-    -fx-border-color: transparent transparent #253247 transparent;
-    -fx-border-width: 0 0 1 0;
+    -fx-background-color: rgba(22,34,58,0.98);
+    -fx-background-radius: 18 18 0 0;
+    -fx-padding: 16 0 16 0;
 }
 
 .table-view .column-header {
     -fx-background-color: transparent;
-    -fx-padding: 12 16;
+    -fx-border-color: transparent;
+    -fx-pref-height: 48;
 }
 
 .table-view .column-header .label {
-    -fx-text-fill: #94a3b8;
+    -fx-text-fill: rgba(190,205,230,0.52);
     -fx-font-size: 11px;
-    -fx-font-weight: 700;
-    -fx-letter-spacing: 1px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER-LEFT;
 }
 
+
 .table-row-cell {
-    -fx-background-color: #131c29;
-    -fx-border-color: transparent transparent #1e293b transparent;
+    -fx-background-color: transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-pref-height: 68;
 }
 
 .table-row-cell:odd {
-    -fx-background-color: #101826;
+    -fx-background-color: rgba(255,255,255,0.015);
 }
 
 .table-row-cell:hover {
-    -fx-background-color: #182232;
+    -fx-background-color: rgba(79,140,255,0.12);
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #2563eb22;
-    -fx-border-color: transparent transparent transparent #60a5fa;
-    -fx-border-width: 0 0 0 3;
+    -fx-background-color: rgba(79,140,255,0.18);
+    -fx-effect: dropshadow(gaussian, rgba(79,140,255,0.30), 14, 0, 0, 0);
 }
+
 
 .table-cell {
-    -fx-text-fill: #cbd5e1;
-    -fx-font-size: 13px;
-    -fx-padding: 13 16;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 0 24 0 24;
+    -fx-border-color: transparent;
 }
 
-.table-row-cell:selected .table-cell {
-    -fx-text-fill: white;
-}
 
 .coluna-valor-positivo {
-    -fx-text-fill: #34d399;
+    -fx-text-fill: #34E89E;
     -fx-font-weight: bold;
 }
 
 .coluna-valor-negativo {
-    -fx-text-fill: #f87171;
+    -fx-text-fill: #FF6B8A;
     -fx-font-weight: bold;
 }
 
 .coluna-tipo-receita {
-    -fx-text-fill: #34d399;
+    -fx-text-fill: #34E89E;
     -fx-font-weight: bold;
 }
 
 .coluna-tipo-despesa {
-    -fx-text-fill: #f87171;
+    -fx-text-fill: #FF6B8A;
     -fx-font-weight: bold;
 }
 
+.coluna-data {
+    -fx-font-family: "Consolas";
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748B;
+}
 
+.table-view .placeholder .label {
+    -fx-text-fill: rgba(190,205,230,0.25);
+    -fx-font-size: 13px;
+}
 
-.rodape {
-    -fx-background-color: #101826;
-    -fx-border-color: #253247 transparent transparent transparent;
-    -fx-border-width: 1 0 0 0;
+.table-view .placeholder {
+    -fx-background-color: transparent;
 }
 
 
-
-.scroll-bar:vertical,
-.scroll-bar:horizontal {
-    -fx-background-color: #101826;
+.card-relatorio-receita,
+.card-relatorio-despesa,
+.card-relatorio-saldo {
+    -fx-background-color: rgba(18,28,45,0.96);
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-padding: 22;
+    -fx-spacing: 10;
+    -fx-pref-width: 250;
+    -fx-min-height: 110;
+    -fx-border-width: 1;
 }
 
-.scroll-bar .thumb {
-    -fx-background-color: #334155;
-    -fx-background-radius: 6;
+.card-relatorio-receita {
+    -fx-border-color: rgba(52,232,158,0.20);
 }
 
-.scroll-bar .thumb:hover {
-    -fx-background-color: #60a5fa;
+.card-relatorio-despesa {
+    -fx-border-color: rgba(255,107,138,0.20);
+}
+
+.card-relatorio-saldo {
+    -fx-border-color: rgba(79,140,255,0.20);
 }
 
 
-
-.dialog-pane {
-    -fx-background-color: #131c29;
-    -fx-border-color: #253247;
+.card-relatorio-label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
 }
 
-.dialog-pane .header-panel {
-    -fx-background-color: #182232;
+.card-relatorio-receita .card-relatorio-label {
+    -fx-text-fill: #34E89E;
 }
 
-.dialog-pane .label {
-    -fx-text-fill: #e2e8f0;
+.card-relatorio-despesa .card-relatorio-label {
+    -fx-text-fill: #FF6B8A;
 }
 
-.dialog-pane .button {
-    -fx-background-color: #2563eb;
+.card-relatorio-saldo .card-relatorio-label {
+    -fx-text-fill: #7FB0FF;
+}
+
+
+.card-relatorio-valor {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
     -fx-text-fill: white;
 }
 
-.anchor-pane,
-.vbox,
-.hbox,
-.grid-pane,
-.stack-pane,
-.border-pane {
-    -fx-background-color: #0f1722;
+
+.chart {
+    -fx-background-color: transparent;
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-content {
+    -fx-padding: 0;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+    -fx-padding: 8 0 0 0;
+}
+
+.chart-pie-label {
+    -fx-fill: #DDE8FF;
+    -fx-font-size: 11px;
 }
 
 
+.default-color0.chart-pie {
+    -fx-pie-color: #34E89E;
+}
 
-.scroll-formulario {
+.default-color1.chart-pie {
+    -fx-pie-color: #FF6B8A;
+}
+
+.check-box {
+    -fx-text-fill: white;
+}
+
+.check-box .box {
+    -fx-background-color: #111C2E;
+    -fx-border-color: rgba(255,255,255,0.08);
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #4F8CFF;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: white;
+}
+
+.scroll-pane,
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .track {
+    -fx-background-color: rgba(255,255,255,0.02);
+    -fx-background-radius: 20;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: rgba(255,255,255,0.10);
+    -fx-background-radius: 20;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: rgba(255,255,255,0.20);
+}
+
+
+.scroll-relatorio {
+    -fx-background: transparent;
     -fx-background-color: transparent;
     -fx-border-color: transparent;
     -fx-padding: 0;
 }
 
-.scroll-formulario > .viewport {
-    -fx-background-color: #0d1117;
-}
-
-.scroll-formulario .content {
-    -fx-background-color: #0d1117;
-}
-
-.scroll-pane {
+.scroll-relatorio > .viewport {
     -fx-background-color: transparent;
 }
 
-.scroll-pane > .viewport {
-    -fx-background-color: #0d1117;
+.scroll-relatorio > .scroll-bar:horizontal {
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
 }
 
-
-
-.painel {
-    -fx-background-color: #0d1117;
-    -fx-spacing: 12;
-}
-
-
-.topo {
-    -fx-background-color: linear-gradient(to right, #0f1c2e, #131c29);
-    -fx-border-color: transparent transparent #1e3a5f transparent;
-    -fx-border-width: 0 0 2 0;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 12, 0, 0, 4);
-}
-
-.logo-icone {
-    -fx-text-fill: #60a5fa;
-    -fx-font-size: 22px;
-    -fx-font-weight: bold;
-}
-
-.topo-card-receita {
-    -fx-background-color: #0d2818;
-    -fx-border-color: #16a34a;
-    -fx-border-width: 1;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
-    -fx-padding: 12 20;
-    -fx-min-width: 155px;
-}
-
-.topo-card-receita:hover {
-    -fx-background-color: #14391f;
-    -fx-border-color: #22c55e;
-}
-
-.topo-card-despesa {
-    -fx-background-color: #2a0d0d;
-    -fx-border-color: #dc2626;
-    -fx-border-width: 1;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
-    -fx-padding: 12 20;
-    -fx-min-width: 155px;
-}
-
-.topo-card-despesa:hover {
-    -fx-background-color: #3b1111;
-    -fx-border-color: #ef4444;
-}
-
-.topo-card-saldo {
-    -fx-background-color: #0c1f3a;
-    -fx-border-color: #2563eb;
-    -fx-border-width: 2;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
-    -fx-padding: 12 22;
-    -fx-min-width: 165px;
-    -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.3), 10, 0, 0, 0);
-}
-
-.topo-card-saldo:hover {
-    -fx-background-color: #112444;
-    -fx-border-color: #3b82f6;
-}
-
-.card-icone-receita {
-    -fx-text-fill: #22c55e;
-    -fx-font-size: 15px;
-    -fx-font-weight: bold;
-}
-
-.card-icone-despesa {
-    -fx-text-fill: #ef4444;
-    -fx-font-size: 15px;
-    -fx-font-weight: bold;
-}
-
-.card-icone-saldo {
-    -fx-text-fill: #60a5fa;
-    -fx-font-size: 15px;
-    -fx-font-weight: bold;
-}
-
-.topo-card-label {
-    -fx-text-fill: #94a3b8;
-    -fx-font-size: 10px;
-    -fx-font-weight: 800;
-}
-
-.topo-card-valor {
-    -fx-font-size: 19px;
-    -fx-font-weight: 800;
-}
-
-.topo-card-valor-positivo { -fx-text-fill: #22c55e; }
-.topo-card-valor-negativo { -fx-text-fill: #f87171; }
-
-.topo-valor          { -fx-text-fill: #60a5fa; -fx-font-size: 22px; -fx-font-weight: 800; }
-.topo-valor-positivo { -fx-text-fill: #22c55e; -fx-font-size: 22px; -fx-font-weight: 800; }
-.topo-valor-negativo { -fx-text-fill: #f87171; -fx-font-size: 22px; -fx-font-weight: 800; }
-
-.topo-separador {
-    -fx-background-color: #253247;
-    -fx-min-width: 1;
-    -fx-pref-width: 1;
-    -fx-max-width: 1;
-    -fx-min-height: 50;
-    -fx-opacity: 0.7;
-}
-
-
-.botao-principal {
-    -fx-background-color: #2563eb;
+.tooltip {
+    -fx-background-color: #111C2E;
     -fx-text-fill: white;
-    -fx-font-size: 13px;
-    -fx-font-weight: bold;
-    -fx-padding: 11 24;
-    -fx-background-radius: 8;
-    -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.4), 8, 0, 0, 2);
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: rgba(255,255,255,0.06);
+    -fx-padding: 10 14 10 14;
 }
 
-.botao-principal:hover {
-    -fx-background-color: #3b82f6;
-    -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.6), 12, 0, 0, 3);
+
+.rodape {
+    -fx-background-color: rgba(5,10,20,0.94);
+    -fx-border-color: rgba(255,255,255,0.05) transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
 }
 
-.botao-principal:pressed {
-    -fx-background-color: #1d4ed8;
-    -fx-effect: none;
-}
-
-.botao-secundario {
-    -fx-background-color: #182232;
-    -fx-text-fill: #60a5fa;
-    -fx-border-color: #2563eb;
+.date-picker-popup {
+    -fx-background-color: #111C2E;
+    -fx-border-color: rgba(79,140,255,0.25);
     -fx-border-width: 1;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-font-size: 13px;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 20, 0, 0, 4);
+}
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #16223A;
+}
+
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-padding: 11 24;
-    -fx-cursor: hand;
 }
 
-.botao-secundario:hover {
-    -fx-background-color: #1e2e48;
-    -fx-border-color: #60a5fa;
-    -fx-text-fill: #93c5fd;
-}
-
-.botao-secundario:pressed {
-    -fx-background-color: #172038;
-}
-
-.botao-perigo {
-    -fx-background-color: #2a0d0d;
-    -fx-text-fill: #f87171;
-    -fx-border-color: #dc2626;
-    -fx-border-width: 1;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-font-size: 13px;
+.date-picker-popup .day-name-cell {
+    -fx-background-color: #16223A;
+    -fx-text-fill: #AFCBFF;
     -fx-font-weight: bold;
-    -fx-padding: 11 24;
-    -fx-cursor: hand;
 }
 
-.botao-perigo:hover {
-    -fx-background-color: #3b1111;
-    -fx-border-color: #ef4444;
-    -fx-text-fill: #fca5a5;
+.date-picker-popup .day-cell {
+    -fx-background-color: #111C2E;
+    -fx-text-fill: white;
 }
 
-.botao-perigo:pressed {
-    -fx-background-color: #200a0a;
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: rgba(79,140,255,0.15);
+}
+
+.date-picker-popup .day-cell:selected {
+    -fx-background-color: #4F8CFF;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup .previous-month,
+.date-picker-popup .next-month {
+    -fx-text-fill: rgba(255,255,255,0.35);
 }

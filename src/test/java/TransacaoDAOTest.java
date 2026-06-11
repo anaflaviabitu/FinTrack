@@ -3,6 +3,8 @@ import org.junit.jupiter.api.*;
 import repository.TransacaoDAO;
 import utils.Conexao;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -10,24 +12,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TransacaoDAOTest {
 
+    private Connection conn;
     private TransacaoDAO dao;
 
     @BeforeEach
     void setUp() throws Exception {
-        Conexao.configurar("jdbc:sqlite::memory:",
-                "",
-                ""
-        );
+
+        conn = DriverManager.getConnection("jdbc:sqlite::memory:");
+
+        Conexao.configurarConexao(conn);
+
         dao = new TransacaoDAO();
         dao.inicializarBanco();
     }
 
     @AfterEach
     void tearDown() throws Exception {
-        try (var conn = Conexao.getConexao();
-             var stmt = conn.createStatement()) {
-            stmt.execute("DROP TABLE IF EXISTS transacoes");
-        }
+        conn.close();
         Conexao.fechar();
     }
 
@@ -38,7 +39,7 @@ class TransacaoDAOTest {
         List<Transacao> lista = dao.listarTodos();
         assertEquals(1, lista.size());
         assertEquals("Salário", lista.get(0).getDescricao());
-        assertEquals(3000.0,    lista.get(0).getValor(), 0.001);
+        assertEquals(3000.0, lista.get(0).getValor(), 0.001);
     }
 
     @Test
@@ -94,33 +95,15 @@ class TransacaoDAOTest {
 
     @Test
     void deveAtualizarTransacao() {
-
-        Transacao t = new Transacao(
-                "Salário",
-                3000,
-                "Receita",
-                LocalDate.now()
-        );
-
+        Transacao t = new Transacao("Salário", 3000, "Receita", LocalDate.now());
         dao.salvar(t);
 
         t.setDescricao("Salário Atualizado");
         t.setValor(5000);
-
         dao.atualizar(t);
 
-        Transacao atualizada =
-                dao.listarTodos().get(0);
-
-        assertEquals(
-                "Salário Atualizado",
-                atualizada.getDescricao()
-        );
-
-        assertEquals(
-                5000,
-                atualizada.getValor(),
-                0.001
-        );
+        Transacao atualizada = dao.listarTodos().get(0);
+        assertEquals("Salário Atualizado", atualizada.getDescricao());
+        assertEquals(5000, atualizada.getValor(), 0.001);
     }
 }

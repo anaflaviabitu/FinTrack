@@ -3,6 +3,7 @@ module com.fintrack {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires java.prefs;
 
 
     opens app        to javafx.graphics, javafx.fxml;
